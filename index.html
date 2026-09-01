@@ -1,11 +1,604 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Prueba</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Un regalo para Paulita ❤️</title>
+
+<style>
+
+  *{
+    box-sizing:border-box;
+  }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(145deg,#fff8f8,#f8f4ff);
+    font-family:Georgia,"Times New Roman",serif;
+    color:#29242a;
+    padding:24px;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+/* =================================
+   FOTOS FLOTANDO POR EL FONDO ❤️
+   ================================= */
+
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+
+  width:260px;
+  height:340px;
+
+  border-radius:24px;
+
+  background-size:cover;
+  background-position:center;
+
+  opacity:0.32;
+
+  box-shadow:0 15px 45px rgba(70,40,55,.20);
+
+  z-index:-1;
+
+  pointer-events:none;
+
+  filter:saturate(.9);
+
+  animation-duration:10s;
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+}
+
+
+/* FOTO 1 */
+
+body::before{
+  background-image:url("iglesia.jpg");
+
+  left:4%;
+  top:12%;
+
+  transform:rotate(-7deg);
+
+  animation-name:flotarIzquierda;
+}
+
+
+/* FOTO 2 */
+
+body::after{
+  background-image:url("espana.jpg");
+
+  right:4%;
+  bottom:10%;
+
+  transform:rotate(7deg);
+
+  animation-name:flotarDerecha;
+}
+
+
+/* Movimiento de la foto izquierda */
+
+@keyframes flotarIzquierda{
+
+  0%{
+    transform:translate(0,0) rotate(-7deg);
+  }
+
+  25%{
+    transform:translate(18px,-20px) rotate(-4deg);
+  }
+
+  50%{
+    transform:translate(5px,-35px) rotate(-9deg);
+  }
+
+  75%{
+    transform:translate(-15px,-15px) rotate(-5deg);
+  }
+
+  100%{
+    transform:translate(0,0) rotate(-7deg);
+  }
+
+}
+
+
+/* Movimiento de la foto derecha */
+
+@keyframes flotarDerecha{
+
+  0%{
+    transform:translate(0,0) rotate(7deg);
+  }
+
+  25%{
+    transform:translate(-15px,-25px) rotate(4deg);
+  }
+
+  50%{
+    transform:translate(-5px,-40px) rotate(9deg);
+  }
+
+  75%{
+    transform:translate(18px,-18px) rotate(5deg);
+  }
+
+  100%{
+    transform:translate(0,0) rotate(7deg);
+  }
+
+}
+
+
+/* =================================
+   MÓVIL
+   ================================= */
+
+@media(max-width:700px){
+
+  body::before,
+  body::after{
+
+    width:150px;
+    height:210px;
+
+    opacity:0.22;
+
+  }
+
+
+  body::before{
+    left:-35px;
+    top:8%;
+  }
+
+
+  body::after{
+    right:-35px;
+    bottom:8%;
+  }
+
+}
+
+
+  /* Capa suave encima de las fotos */
+
+  body{
+    isolation:isolate;
+  }
+
+  body::marker{
+    display:none;
+  }
+
+
+  /* =========================
+     TARJETA PRINCIPAL
+     ========================= */
+
+  .card{
+    width:min(92vw,560px);
+    text-align:center;
+
+    background:rgba(255,255,255,.90);
+
+    border:1px solid rgba(180,150,160,.25);
+
+    border-radius:28px;
+
+    padding:38px 24px 34px;
+
+    box-shadow:
+      0 20px 60px rgba(70,40,55,.18),
+      0 0 0 1px rgba(255,255,255,.5);
+
+    backdrop-filter:blur(12px);
+
+    position:relative;
+    z-index:5;
+  }
+
+
+  .heart{
+    font-size:30px;
+    margin-bottom:8px;
+  }
+
+
+  h1{
+    font-size:clamp(28px,7vw,42px);
+    margin:0 0 12px;
+    font-weight:500;
+  }
+
+
+  .subtitle{
+    font-family:Arial,sans-serif;
+    font-size:15px;
+    color:#756b73;
+    margin:0 auto 30px;
+    line-height:1.6;
+  }
+
+
+  /* =========================
+     CUENTA ATRÁS
+     ========================= */
+
+  .countdown{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:9px;
+    margin:0 auto 30px;
+
+    font-family:Arial,sans-serif;
+  }
+
+
+  .unit{
+    background:#fff;
+    border-radius:16px;
+    padding:14px 5px;
+
+    box-shadow:
+      0 7px 20px rgba(60,35,50,.07);
+  }
+
+
+  .num{
+    display:block;
+    font-size:clamp(22px,6vw,31px);
+    font-weight:700;
+  }
+
+
+  .label{
+    display:block;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#8c8188;
+    margin-top:5px;
+  }
+
+
+  /* =========================
+     CAJA DEL REGALO
+     ========================= */
+
+  .gift{
+    width:min(100%,380px);
+    aspect-ratio:1;
+
+    margin:0 auto;
+
+    border:2px dashed #d9cdd3;
+
+    border-radius:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.75);
+
+    position:relative;
+
+    overflow:hidden;
+  }
+
+
+  .locked{
+    font-family:Arial,sans-serif;
+    color:#9a8e95;
+  }
+
+
+  .lock{
+    font-size:32px;
+    display:block;
+    margin-bottom:9px;
+  }
+
+
+  .locked span{
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+  }
+
+
+  .unlocked{
+    display:none;
+    width:100%;
+    height:100%;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+  }
+
+
+  .unlocked img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+
+  .message{
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    line-height:1.5;
+    padding:22px;
+  }
+
+
+  .footer{
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    color:#a1969d;
+    margin-top:24px;
+  }
+
+
+  /* =========================
+     ADAPTACIÓN PARA MÓVIL
+     ========================= */
+
+  @media(max-width:700px){
+
+    body{
+      padding:15px;
+    }
+
+    body::before,
+    body::after{
+      width:190px;
+      height:270px;
+      opacity:.32;
+    }
+
+    body::before{
+      left:-75px;
+      top:3%;
+    }
+
+    body::after{
+      right:-75px;
+      bottom:3%;
+    }
+
+    .card{
+      width:94vw;
+      padding:32px 18px 28px;
+    }
+
+    .countdown{
+      gap:6px;
+    }
+
+    .unit{
+      padding:12px 3px;
+    }
+
+  }
+
+
+  /* =========================
+     PANTALLAS MUY PEQUEÑAS
+     ========================= */
+
+  @media(max-width:420px){
+
+    body::before,
+    body::after{
+      width:150px;
+      height:220px;
+      opacity:.25;
+    }
+
+    .card{
+      padding:28px 14px 25px;
+    }
+
+  }
+
+</style>
 </head>
+
+
 <body>
-  <h1>¡FUNCIONA!</h1>
-  <p>GitHub Pages está funcionando correctamente.</p>
+
+<main class="card">
+
+  <div class="heart">♡</div>
+
+  <h1>
+    El regalo esta de camino ✈️...
+  </h1>
+
+  <p class="subtitle">
+    La paciencia es la clave.<br>
+    Vuelve cuando llegue el momento ❤️
+  </p>
+
+
+  <!-- CUENTA ATRÁS -->
+
+  <div class="countdown" aria-label="Cuenta atrás">
+
+    <div class="unit">
+      <span class="num" id="days">000</span>
+      <span class="label">Días</span>
+    </div>
+
+    <div class="unit">
+      <span class="num" id="hours">00</span>
+      <span class="label">Horas</span>
+    </div>
+
+    <div class="unit">
+      <span class="num" id="minutes">00</span>
+      <span class="label">Minutos</span>
+    </div>
+
+    <div class="unit">
+      <span class="num" id="seconds">00</span>
+      <span class="label">Segundos</span>
+    </div>
+
+  </div>
+
+
+  <!-- REGALO -->
+
+  <section class="gift">
+
+    <div class="locked" id="locked">
+
+      <span class="lock">🔒</span>
+
+      <span>
+        Regalo bloqueado
+      </span>
+
+    </div>
+
+
+    <div class="unlocked" id="unlocked">
+
+      <div class="message" id="message">
+
+        <h2>🎁 ¡Se desbloqueó!</h2>
+
+        <p>
+          Aquí aparecerá tu regalo.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="footer">
+    Hecho especialmente para mi Paulita ❤️
+  </div>
+
+</main>
+
+
+<script>
+
+/*
+  FECHA DE DESBLOQUEO
+
+  Formato:
+  YYYY-MM-DDTHH:MM:SS
+*/
+
+const unlockDate = new Date("2027-03-22T00:00:00");
+
+
+function pad(n){
+  return String(n).padStart(2,"0");
+}
+
+
+function update(){
+
+  const now = new Date();
+
+  let diff = unlockDate - now;
+
+
+  /* CUANDO LLEGUE LA FECHA */
+
+  if(diff <= 0){
+
+    document.getElementById("days").textContent = "000";
+
+    document.getElementById("hours").textContent = "00";
+
+    document.getElementById("minutes").textContent = "00";
+
+    document.getElementById("seconds").textContent = "00";
+
+
+    document.getElementById("locked").style.display = "none";
+
+    document.getElementById("unlocked").style.display = "flex";
+
+
+    document.querySelector("h1").textContent =
+      "¡Tu regalo se ha desbloqueado!";
+
+
+    document.querySelector(".subtitle").innerHTML =
+      "Después de todo este tiempo...<br>ya puedes descubrirlo ❤️";
+
+
+    return;
+  }
+
+
+  /* CALCULAR TIEMPO */
+
+  const days = Math.floor(diff / 86400000);
+
+  diff %= 86400000;
+
+
+  const hours = Math.floor(diff / 3600000);
+
+  diff %= 3600000;
+
+
+  const minutes = Math.floor(diff / 60000);
+
+  const seconds = Math.floor((diff % 60000) / 1000);
+
+
+  /* MOSTRAR TIEMPO */
+
+  document.getElementById("days").textContent =
+    String(days).padStart(3,"0");
+
+
+  document.getElementById("hours").textContent =
+    pad(hours);
+
+
+  document.getElementById("minutes").textContent =
+    pad(minutes);
+
+
+  document.getElementById("seconds").textContent =
+    pad(seconds);
+
+}
+
+
+update();
+
+setInterval(update,1000);
+
+</script>
+
+
 </body>
 </html>
